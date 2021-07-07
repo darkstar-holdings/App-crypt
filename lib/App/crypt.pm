@@ -1,39 +1,53 @@
 package App::crypt;
-use 5.008001;
-use strict;
-use warnings;
 
-our $VERSION = "0.01";
+use App::Cmd::Setup -app;
 
+our $VERSION = '0.0.1';
 
+sub config {
+  my $app = shift;
+  $app->{'config'} ||= _init_config();
+}
+
+sub _init_config {
+  my $app = shift;
+  
+  my $openssl_version_string = '';
+
+  unless ( $openssl_version_string = `openssl version` ) {
+     exit 1;
+  }
+
+  $openssl_version_string =~ m/^(\w+)/;
+
+  return {
+    openssl_type => lc ($1 || '')
+  }
+}
 
 1;
-__END__
 
+__END__
 =encoding utf-8
 
 =head1 NAME
 
-App::crypt - It's new $module
-
-=head1 SYNOPSIS
-
-    use App::crypt;
+App::crypt - An openssl wrapper to encrypt and decrypt files.
 
 =head1 DESCRIPTION
 
-App::crypt is ...
-
-=head1 LICENSE
-
-Copyright (C) David Betz.
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is a Quality of Life (QoL) openssl command wrapper that
+handles all my standard file/directory encryption/decryption
+needs.
 
 =head1 AUTHOR
 
 David Betz E<lt>hashref@gmail.comE<gt>
 
-=cut
+=head1 COPYRIGHT
 
+This software is copyright (c) 2021 by David Betz
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=cut

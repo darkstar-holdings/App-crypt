@@ -1,6 +1,8 @@
-requires 'perl', '5.008001';
+requires 'perl', '>= 5.020';
 
-on 'test' => sub {
-    requires 'Test::More', '0.98';
+requires 'App::Cmd', '>= 0.333';
+requires 'Readonly', '>= 2.05';
+
+on test => sub {
+    requires 'Test::More', '0.96';
 };
-

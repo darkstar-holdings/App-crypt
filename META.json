@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "An openssl wrapper to encrypt and decrypt files.",
    "author" : [
       "David Betz <hashref@gmail.com>"
    ],
@@ -42,17 +42,30 @@
       },
       "runtime" : {
          "requires" : {
-            "perl" : "5.008001"
+            "App::Cmd" : "0.333",
+            "Readonly" : "2.05",
+            "perl" : "5.020"
          }
       },
       "test" : {
          "requires" : {
-            "Test::More" : "0.98"
+            "Test::More" : "0.96"
          }
       }
    },
    "release_status" : "unstable",
-   "version" : "0.01",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/hashref/App-crypt/issues"
+      },
+      "homepage" : "https://github.com/hashref/App-crypt",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/hashref/App-crypt.git",
+         "web" : "https://github.com/hashref/App-crypt"
+      }
+   },
+   "version" : "0.0.1",
    "x_serialization_backend" : "JSON::PP version 4.06",
    "x_static_install" : 1
 }
